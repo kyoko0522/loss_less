@@ -1,4 +1,4 @@
-<%= @user.name %>店出品商品一覧
+<%#= @user.name %>店出品商品一覧
 
 <table class="table table-hover table-inverse">
     <thead>
@@ -14,7 +14,7 @@
         <tbody>
             <% @items.each do |item| %>
           <tr>
-            <td><%= item.name %></td>
+            <td><%= link_to item.name, item_path(item.id) %></td>
             <td><%= item.code %></td>
             <td><%= item.amount %></td>
             <td><%= item.price %></td>
@@ -22,7 +22,7 @@
             <td><%= @subtotal %></td>
             <td><%= item.until %></td>
             <td><%#= attachment_image_tag @item, :image %></td>
-            <td><%= link_to "編集", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
+            
           </tr>
           <% end %>
         </tbody>
