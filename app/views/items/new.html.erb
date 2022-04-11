@@ -1,0 +1,47 @@
+<%= form_with model:@item, url: items_path, method: :post,  local:true do |f| %>
+<table>
+
+<tr>
+  <th>商品画像</th>
+  <td><%= f.attachment_field :image %>
+</tr>
+
+<tr>
+  <th>商品名</th>
+  <td><%= f.text_field :name %></td>
+</tr>
+<tr>
+    <th>商品コード</th>
+    <td><%= f.text_field :code %>円</td>
+</tr>
+
+<tr>
+    <th>数量</th>
+    <td><%= f.text_field :amount %>円</td>
+</tr>
+
+<tr>
+    <th>原価</th>
+    <td><%= f.text_field :price %>円</td>
+</tr>
+
+<tr>
+    <th>消費期限</th>
+    <td><%= f.date_field :until %></td>
+</tr>
+
+
+<tr>
+   <th>備考</th>
+   <td><%= f.text_area :notice %></td>
+</tr>
+
+
+<tr>
+   <td></td>
+   <td><%= f.submit '出品登録',class: "btn btn-sm btn-success" %></td>
+</tr>
+
+
+<% end %>
+</table>
