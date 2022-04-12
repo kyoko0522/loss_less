@@ -1,0 +1,21 @@
+デットストック検索
+<%= form_with url: items_search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit :search %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.amount%></td>
+        <td><%= link_to item.user.name, new_order_path(user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
