@@ -1,19 +1,27 @@
 class OrdersController < ApplicationController
-  
-  def new
-    @order = Order.new
-    @user = User.find(params[:id])
-    @items = @user.items
-  end
-  
+
+
   def create
+    order = Order.new(order_params)
+    order.save
+    redirect_to orders_complete_path
   end
-  
-  
+
+
   def index
+    @orders = current_user.orders
   end
-  
+
   def show
+    @order = Order.find(params[:id])
   end
-  
+
+  private
+
+  def order_params
+  params.require(:order).permit(:item_id, :amount, :ordered_user_id, :order_user_id, :send_status)
+  end
+
+
+
 end

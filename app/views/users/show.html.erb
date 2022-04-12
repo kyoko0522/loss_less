@@ -1,0 +1,30 @@
+<%= @user.name %>店出品商品一覧
+
+<table class="table table-hover table-inverse">
+    <thead>
+        <tr>
+        <th>商品名</th>
+        <th>数量</th>
+        <th>原価</th>
+        <th>在庫金額</th>
+        <th>消費期限</th>
+        <th>備考</th>
+        <th>画像</th>
+        </tr>
+    </thead>
+
+ <tbody>
+
+  <div class="check_box" >
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= collection_check_boxes(:item, :user_ids, User.all, :id, :name) do |b| %></td>
+        <td><%= b.label { b.check_box + b.text } %><%= item.name %></td>
+        <td><%= item.amount%></td>
+        <td><%= item.price %></td>
+        <td><%= item.until %></td>
+        <td><%= item.notice %></td>
+      </tr>
+    <% end %>
+  </div>
+  </tbody>
