@@ -15,16 +15,22 @@
 
  <tbody>
 
-  <div class="check_box" >
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= collection_check_boxes(:item, :user_ids, User.all, :id, :name) do |b| %></td>
-        <td><%= b.label { b.check_box + b.text } %><%= item.name %></td>
-        <td><%= item.amount%></td>
+
+
+
+       <%= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
+        <<%= collection_check_boxes(:order, :item_ids, Item.all, :id, :name) do |b| %>
+        <tr>
+        <td><%= b.label { b.check_box + b.text } %></td>
+        <% end %>
+        <% @items.each do |item| %>
+        <td><%= f.text_field :amount %><%= item.amount %></td>
         <td><%= item.price %></td>
         <td><%= item.until %></td>
         <td><%= item.notice %></td>
       </tr>
     <% end %>
-  </div>
+    <%= f.submit'注文する' %>
+    <% end %>
+
   </tbody>

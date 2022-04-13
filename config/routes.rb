@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'items/search' => 'items#search'
   resources :items
-  resources :orders, only: [:index, :show, :create]
   get 'orders/complete' => 'orders#complete'
+  resources :orders, only: [:index, :show, :create]
   resources :users, only: [:show]
 end
