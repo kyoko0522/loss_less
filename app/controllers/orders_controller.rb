@@ -3,8 +3,10 @@ class OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
+    order.order_user_id = current_user.id
+    order.ordered_user_id = User.find(params[:user_id])
     order.save
-    redirect_to orders_complete_path
+      redirect_to orders_complete_path
   end
 
 
@@ -19,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-  params.require(:order).permit(:item_id, :ordered_user_id, :order_user_id,  { :item_ids=> [] })
+  params.require(:order).permit(:amount, { :item_ids=> [] })
   end
 
 

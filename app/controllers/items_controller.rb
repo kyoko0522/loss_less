@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     else
       @items = Item.none
     end
-    @user = @item.user
+
    end
 
   def new

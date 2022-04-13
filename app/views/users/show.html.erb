@@ -19,18 +19,23 @@
 
 
        <%= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
-        <<%= collection_check_boxes(:order, :item_ids, Item.all, :id, :name) do |b| %>
-        <tr>
+
+        <%= collection_check_boxes(:order, :item_ids, Item.all, :id, :name) do |b| %>
+      <tr>
         <td><%= b.label { b.check_box + b.text } %></td>
         <% end %>
         <% @items.each do |item| %>
-        <td><%= f.text_field :amount %><%= item.amount %></td>
+        <td><%= item.amount %></td>
         <td><%= item.price %></td>
         <td><%= item.until %></td>
         <td><%= item.notice %></td>
       </tr>
-    <% end %>
-    <%= f.submit'注文する' %>
+        <% end %>
+        <%= f.hidden_field :amount, :value => @order.amount %>
+
+
+    <%= f.submit '注文する' %>
     <% end %>
 
   </tbody>
+  </table>
