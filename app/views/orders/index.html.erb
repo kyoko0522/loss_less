@@ -10,15 +10,15 @@
         </tr>
     </thead>
         <tbody>
-            <% @items.each do |item| %>
+            <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to item.name, item_path(item.id) %></td>
-            <td><%= item.code %></td>
-            <td><%= item.amount %></td>
-            <td><%= item.price %></td>
-            <% @subtotal = item.price * item.amount %>
-            <td><%= @subtotal %></td>
-            <td><%= item.until %></td>
+            <td><%#= link_to order.order_items.name, item_path(item.id) %></td>
+            <td><%= order.order_user.name %></td>
+            <td><%#= order_item.item.amount %></td>
+            <td><%#= order_item.item.price %></td>
+            <%# @subtotal = order_item.item.price * order_item.item.amount %>
+            <td><%#= @subtotal %></td>
+            <td><%#= order_item.item.until %></td>
             <td><%#= attachment_image_tag @item, :image %></td>
 
           </tr>

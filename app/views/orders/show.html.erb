@@ -11,14 +11,14 @@
     </thead>
         <tbody>
           <tr>
-            <td><%= @item.name %></td>
-            <td><%= @item.code %></td>
-            <td><%= @item.amount %></td>
-            <td><%= @item.price %></td>
-            <% @subtotal = item.price * item.amount %>
-            <td><%= @subtotal %></td>
-            <td><%= @item.until %></td>
-            <td><%= attachment_image_tag @item, :image %></td>
+            <td><%= @order_item.id %></td>
+            <td><%#= @order.item.code %></td>
+            <td><%#= @order.item..amount %></td>
+            <td><%#= @order.item.price %></td>
+            <%# @subtotal = item.price * item.amount %>
+            <td><%#= @subtotal %></td>
+            <td><%#= @item.until %></td>
+            <td><%#= attachment_image_tag @item, :image %></td>
           </tr>
 
         </tbody>
