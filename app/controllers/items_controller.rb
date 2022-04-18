@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
    def search
     if params[:name].present?
       @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      Item.where.not(user_id: 'current_user')
     else
       @items = Item.none
     end
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    # @user.name = current_user.name
+    @user = current_user
     @items = current_user.items.all
 
   end

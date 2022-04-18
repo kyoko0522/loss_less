@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+
 <%= form_with model:@item, url: item_path(@item), method: :patch, local:true do |f| %>
 <table>
 <tr>
@@ -42,10 +46,12 @@
    <td><%= f.text_area :notice %></td>
 </tr>
 
-
-<tr>
-    <td><%= f.submit'変更を保存',class: "btn btn-sm btn-success" %></td>
-
-</tr>
-<% end %>
 </table>
+
+<div class="col-md-7 offset-md-5">
+  <%= f.submit'変更を保存',class: "btn btn-sm btn-success" %>
+</div>
+</div>
+  </div>
+</div>
+<% end %>

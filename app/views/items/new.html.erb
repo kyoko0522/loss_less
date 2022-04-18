@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
 <%= form_with model:@item, url: items_path, method: :post,  local:true do |f| %>
 <table>
 
@@ -35,13 +38,16 @@
    <th>備考</th>
    <td><%= f.text_area :notice %></td>
 </tr>
+</table>
 
+<div class="col-md-7 offset-md-5">
+  <%= f.submit '出品登録',class: "btn btn-sm btn-success" %>
+</div>
 
-<tr>
-   <td></td>
-   <td><%= f.submit '出品登録',class: "btn btn-sm btn-success" %></td>
-</tr>
 
 
 <% end %>
-</table>
+
+</div>
+  </div>
+</div>

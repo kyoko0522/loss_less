@@ -1,1 +1,12 @@
-<%= link_to "出品商品一覧", items_path %>
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+    <h3><出品商品></h3>
+     <p><%= link_to "出品商品一覧", items_path %></p>
+     <p><%= link_to "出品商品登録", new_item_path %></p>
+    <h3><履歴></h3>
+     <p><%= link_to "発送依頼履歴", sells_path %></p>
+     <p><%= link_to "在庫受け入れ履歴", orders_path %></p>
+     </div>
+  </div>
+</div>

@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-7 offset-md-3">
+
 <h2>出品商品詳細</h2>
 <table>
 <tr>
@@ -35,6 +39,9 @@
 
 <tr>
 <td><%= link_to "編集", edit_item_path(@item.id), class: "btn btn-sm btn-primary" %></td>
-<td><%= link_to "出品取り消し", item_path(@item), method: :delete, "data-confirm" => "本当に取り消しますか？" %></td>
+<td><%= link_to "出品取り消し", item_path(@item), method: :delete, "data-confirm" => "本当に取り消しますか？", class: "btn btn-sm btn-danger" %></td>
 </tr>
 </table>
+ </div>
+  </div>
+</div>

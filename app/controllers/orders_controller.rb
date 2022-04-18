@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
    order.save
     order_item_params[:item_id].each do |item_id|
      order_item = OrderItem.new(order_item_params)
-     byebug
      order_item.item_id = item_id
      order_item.save
     end
@@ -30,13 +29,15 @@ class OrdersController < ApplicationController
     #   order_item.amount = cart.amount
     #   order_item.save
     #   end
-      redirect_to orders_complete_path
+    Item.where(item_id: order_item_params[:item_id]).delete_all
+    redirect_to orders_complete_path
   end
 
 
   def index
     if Order.where(order_user_id: current_user.id).present?
-       @orders = current_user.orders
+      # @orders = current_user.orders
+      @orders = Order.where(order_user_id: 'current_user')
     else
       nil
     end

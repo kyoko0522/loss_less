@@ -1,4 +1,8 @@
-<%= @user.name %>店出品商品一覧
+<div class="container">
+  <div class="row">
+   <div class="col-md-8 offset-md-2">
+
+<h3><strong><%= @user.name %>店出品商品一覧</strong></h3>
 
 <table class="table table-hover table-inverse">
     <thead>
@@ -12,7 +16,9 @@
         <th>画像</th>
         </tr>
     </thead>
-
+ </div>
+  </div>
+</div>
 
 
 
@@ -23,7 +29,7 @@
        <%= f.hidden_field :order_user_id, :value => current_user.id %>
         <%= f.hidden_field :ordered_user_id, :value => @user.id %>
 
-        <%= f.fields_for @order_item do |o| %>
+
         <%= collection_check_boxes(:order_item, :item_id, @user.items, :id, :name, include_hidden: false) do |b| %>
     <tbody>
       <tr>
@@ -32,15 +38,23 @@
         <% @items.each do |item| %>
         <td><%= item.amount %></td>
         <td><%= item.price %></td>
+        <% @subtotal = item.price * item.amount %>
+        <td><%= @subtotal %></td>
         <td><%= item.until %></td>
         <td><%= item.notice %></td>
      </tr>
     </tbody>
 </table>
 <% end %>
-
-
-    <%= f.submit '注文する' %>
+<% @total +=  @subtotal %>
+<!--<div class="col-md-4 offset-md-8">-->
+<!--  合計在庫金額 <%#= @total %>円-->
+  <div class="col-md-1 offset-md-11">
+  <%= f.submit '注文する', class: "btn btn-sm btn-primary" %>
+  <!--</div>-->
+</div>
 
 <% end %>
-<% end %>
+</div>
+  </div>
+</div>
