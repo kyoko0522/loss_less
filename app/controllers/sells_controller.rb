@@ -2,10 +2,10 @@ class SellsController < ApplicationController
 
   def index
     if Order.where(ordered_user_id: current_user.id).present?
-      # @orders = current_user.orders
-        @orders = Order.where(ordered_user_id: 'current_user')
+      @orders = current_user.orders
+        # @orders = Order.where(ordered_user_id: 'current_user')
     else
-      nil
+      redirect_to root_path
     end
 
   end

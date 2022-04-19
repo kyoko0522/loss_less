@@ -1,25 +1,24 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-11 offset-md-1">
 <table class="table table-hover table-inverse">
     <thead>
         <tr>
             <th>商品名</th>
             <th>商品コード</th>
-            <th>数量</th>
-            <th>原価</th>
-            <th>在庫金額</th>
-            <th>消費期限</th>
+            <th>商品画像</th>
         </tr>
     </thead>
         <tbody>
           <tr>
-            <td><%= @order_item.id %></td>
-            <td><%#= @order.item.code %></td>
-            <td><%#= @order.item..amount %></td>
-            <td><%#= @order.item.price %></td>
-            <%# @subtotal = item.price * item.amount %>
-            <td><%#= @subtotal %></td>
-            <td><%#= @item.until %></td>
-            <td><%#= attachment_image_tag @item, :image %></td>
+        <% @order_items.each do |item| %>
+            <td><%= item.item.name %></td>
+            <td><%= item.item.code %></td>
+            <td><%= attachment_image_tag item.item, :image %></td>
           </tr>
-
+         <% end %>
         </tbody>
 </table>
+</div>
+  </div>
+</div>

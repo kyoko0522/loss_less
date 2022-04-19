@@ -11,12 +11,13 @@ class OrdersController < ApplicationController
     # order.save!
     # end
    order = Order.new(order_params)
-   order.order_user_id = order_params[:order_user_id]
-   order.ordered_user_id = order_params[:ordered_user_id]
+  order.order_user_id = order_params[:order_user_id]
+  order.ordered_user_id = order_params[:ordered_user_id]
    order.save
     order_item_params[:item_id].each do |item_id|
-     order_item = OrderItem.new(order_item_params)
-     order_item.item_id = item_id
+    order_item = OrderItem.new(order_item_params)
+    order_item.item_id = item_id
+    order_item.order_id = order.id
      order_item.save
     end
 
@@ -29,27 +30,28 @@ class OrdersController < ApplicationController
     #   order_item.amount = cart.amount
     #   order_item.save
     #   end
-    Item.where(item_id: order_item_params[:item_id]).delete_all
+    # Order.where(item_id: order_item_params[:item_id]).destroy_all
+    # order_item = OrderItem.find(order_item_params[:item_id])
+    Item.find(order_item_params[:item_id]).destroy_all
     redirect_to orders_complete_path
   end
 
 
   def index
+    # binding.pry
+    @user = current_user
     if Order.where(order_user_id: current_user.id).present?
-      # @orders = current_user.orders
-      @orders = Order.where(order_user_id: 'current_user')
+    @orders = current_user.orders
+    #   @orders = Order.find(3)
+    #   # @orders = Order.where(order_user_id: 'current_user')
     else
-      nil
+      redirect_to root_path
     end
   end
 
   def show
-       @order = Order.find(params[:id])
-    if @order.order_user_id = current_user.id
-       @order_items = @order.order_items
-    else
-      nil
-    end
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   private
@@ -60,7 +62,7 @@ class OrdersController < ApplicationController
 
 
   def order_params
-  params.require(:order).permit(:ordered_user_id, :order_user_id, :id)
+  params.require(:order).permit(:ordered_user_id, :order_user_id)
   end
 
 

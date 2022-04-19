@@ -16,9 +16,7 @@
         <th>画像</th>
         </tr>
     </thead>
- </div>
-  </div>
-</div>
+
 
 
 
@@ -34,7 +32,10 @@
     <tbody>
       <tr>
         <td><%= b.label { b.check_box + b.text } %></td>
-        <% end %>
+      <% end %>
+      </tr>
+
+      <tr>
         <% @items.each do |item| %>
         <td><%= item.amount %></td>
         <td><%= item.price %></td>
@@ -49,6 +50,7 @@
 <% @total +=  @subtotal %>
 <!--<div class="col-md-4 offset-md-8">-->
 <!--  合計在庫金額 <%#= @total %>円-->
+
   <div class="col-md-1 offset-md-11">
   <%= f.submit '注文する', class: "btn btn-sm btn-primary" %>
   <!--</div>-->

@@ -15,14 +15,18 @@
       <th>出品店舗</th>
     </tr>
   </thead>
+
   <tbody>
     <% @items.each do |item| %>
+    <% unless item.user == current_user %>
       <tr>
         <td><%= item.name %></td>
         <td><%= item.amount%></td>
         <td><%= link_to item.user.name, user_path(item.user.id) %></td>
       </tr>
     <% end %>
+    <% end %>
+
   </tbody>
 </table>
  </div>
