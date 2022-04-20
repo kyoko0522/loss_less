@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+ before_action :authenticate_user!
    def search
     if params[:name].present?
       @items = Item.where('name LIKE ?', "%#{params[:name]}%")

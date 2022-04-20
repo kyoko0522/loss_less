@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get 'orders/complete' => 'orders#complete'
   resources :orders, only: [:index, :show, :create]
   resources :users, only: [:show]
-  resources :sells, only: [:index, :show]
+  resources :sells, only: [:index, :show, :update]
 end

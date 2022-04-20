@@ -23,6 +23,10 @@
     <% if user_signed_in? %>
 
     <li class="nav-item ">
+      <%= link_to "トップ", root_path, class: 'nav-link text-dark' %>
+     </i>
+
+    <li class="nav-item ">
       <%= link_to "在庫検索", items_search_path, class: 'nav-link text-dark' %>
      </i>
 

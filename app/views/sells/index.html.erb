@@ -1,35 +1,59 @@
 <div class="container">
   <div class="row">
-   <div class="col-md-8 offset-md-2">
-
+   <div class="col-md-11 offset-md-1">
 <table class="table table-hover table-inverse">
     <thead>
         <tr>
+            <th>注文店舗名</th>
+            <th>注文日</th>
             <th>商品名</th>
             <th>商品コード</th>
             <th>数量</th>
             <th>原価</th>
             <th>在庫金額</th>
             <th>消費期限</th>
+            <th>発送ステータス</th>
         </tr>
     </thead>
-        <tbody>
+         <tbody>
             <% @orders.each do |order| %>
           <tr>
-             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-             <td><%#= order.user.postal_code %><%#= order.user.address %><%#= order.user.name %></td>
+             <td><%= order.order_user.name %>店</td>
+             <td><%= link_to order.created_at.strftime('%Y/%m/%d'), sell_path(order.id) %></td>
+
+             <td width=”300″>
              <% order.order_items.each do |item| %>
-            <td><%= link_to item.item.name, order_path(order.id) %></td>
-            <td><%= item.item.code %></td>
-            <td><%= item.item.amount %></td>
-            <td><%= item.item.price %></td>
+            <%=item.item.name %></br>
+            <% end %></td>
+
+             <td><% order.order_items.each do |item| %>
+            <%= item.item.code %></br>
+            <% end %></td>
+
+            <td><% order.order_items.each do |item| %>
+            <%= item.item.amount %></br>
+            <% end %></td>
+
+            <td><% order.order_items.each do |item| %>
+            <%= item.item.price %></br>
+
+            <% end %></td>
+
+
+            <td><% order.order_items.each do |item| %>
             <% @subtotal = item.item.price * item.item.amount %>
-            <td><%= @subtotal %></td>
-            <td><%= item.item.until %></td>
-            <td><%#= attachment_image_tag @item, :image %></td>
+            <%= @subtotal %></br>
+            <% end %></td>
+
+
+            <td><% order.order_items.each do |item| %>
+            <%= item.item.until %></br>
+            <% end %></td>
+
+            <td><%= order.send_status  ? '発送済み' :'準備中' %></td>
 
           </tr>
-          <% end %>
+
           <% end %>
         </tbody>
 </table>

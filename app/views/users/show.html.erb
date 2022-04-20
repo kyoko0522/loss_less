@@ -43,9 +43,17 @@
         <td><%= @subtotal %></td>
         <td><%= item.until %></td>
         <td><%= item.notice %></td>
+        <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
+<%#= f.hidden_field :amount, :value => item.amount, multiple: true%>
+<%#= f.hidden_field :price, :value => item.price, multiple: true %>
+<%#= f.hidden_field :until, :value => item.until, multiple: true %>
+<%#= f.hidden_field :notice, :value => item.notice, multiple: true %>
+<%#= f.hidden_field :image_id, :value => item.image_id, multiple: true %>
      </tr>
     </tbody>
 </table>
+
+
 <% end %>
 <% @total +=  @subtotal %>
 <!--<div class="col-md-4 offset-md-8">-->

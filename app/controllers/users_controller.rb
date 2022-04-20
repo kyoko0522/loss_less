@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+ before_action :authenticate_user!
    def show
     @order = Order.new
     @order_item = OrderItem.new

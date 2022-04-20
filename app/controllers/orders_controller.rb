@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+ before_action :authenticate_user!
 
   def create
 
@@ -14,25 +14,40 @@ class OrdersController < ApplicationController
   order.order_user_id = order_params[:order_user_id]
   order.ordered_user_id = order_params[:ordered_user_id]
    order.save
+
     order_item_params[:item_id].each do |item_id|
     order_item = OrderItem.new(order_item_params)
     order_item.item_id = item_id
     order_item.order_id = order.id
-     order_item.save
+    # # order_item.code = item.code
+    # # order_item.price = item.price
+    # # order_item.amount = item.amount
+    # # order_item.until = item.until
+    # # order_item.image_id = item.image_id
+    # # order_item.notice = item.notice
+
+    order_item.save
     end
 
-    # @item_id = order_params[:item_ids].reject(&:blank?).first
-    # @item = Item.find(item_id)
-    # order.each do |order|
+    # item_id = order_params[:item_id]
+    # item = Item.find(item_id)
+    # item.each do |item|
     #   order_item = OrderItem.new
-    #   order_item.id = order.item_id
+    #   order_item.item_id = item.id
     #   order_item.order_id = order.id
-    #   order_item.amount = cart.amount
+    #   order_item.amount = item.amount
+    #   order_item.price = item.price
+    #   order_item.notice = item.notice
+    #   order_item.until = item.until
+    #   order_item.image_id = item.image_id
     #   order_item.save
     #   end
     # Order.where(item_id: order_item_params[:item_id]).destroy_all
     # order_item = OrderItem.find(order_item_params[:item_id])
-    Item.find(order_item_params[:item_id]).destroy_all
+    # byebug
+    # Item.find(order_item_params[:item_id]).each do |item|
+    #   item.delete
+    # end
     redirect_to orders_complete_path
   end
 
@@ -56,8 +71,12 @@ class OrdersController < ApplicationController
 
   private
 
+  # def order_item_params
+  # params.require(:order_item).permit(:amount, :name, :code, :image_id, :notice, :price, :until, { :item_id=> [] })
+  # end
+
   def order_item_params
-  params.require(:order_item).permit({:amount=> [] }, { :item_id=> [] })
+  params.require(:order_item).permit({ :item_id=> [] })
   end
 
 
