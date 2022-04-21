@@ -2,28 +2,45 @@
   <div class="row">
    <div class="col-md-8 offset-md-2">
 <%= form_with model:@order, url: sell_path(@order.id), method: :patch,  local:true do |f| %>
+<h2><strong>発送ステータス変更</strong></h2>
+<table class="table table-borderless">
 
-<table>
+  <tr>
+  <% @order.order_items.each do |item| %>
+   <th>商品画像</th>
+   <% if item.image_id? %>
+   <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></br>
+    <% end %></td>
+    <% end %>
+</tr>
+
   <% @order.order_items.each do |item| %>
 <tr>
   <th>商品名</th>
-  <td><%= item.item.name %></br>
+  <td><%= item.name %></br>
    <% end %></td>
 </tr>
 
 <tr>
   <% @order.order_items.each do |item| %>
    <th>商品説明</th>
-   <td><%= item.item.code %></br>
+   <td><%= item.code %></br>
     <% end %></td>
 </tr>
 
 <tr>
   <% @order.order_items.each do |item| %>
     <th>個数</th>
-    <td><%= item.item.amount %>円</br>
+    <td><%= item.amount %></br>
     <% end %> </td>
 </tr>
+
+<tr>
+    <th>注文者情報</th>
+    <td>注文店舗：<%= @order.order_user.name %></br>郵便番号：<%= @order.order_user.postal_code %></br>住所：<%= @order.order_user.address %></br>電話番号：<%= @order.order_user.telephone_number %></br>
+     </td>
+</tr>
+
 
 
    <tr>

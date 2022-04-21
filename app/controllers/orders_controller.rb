@@ -15,19 +15,24 @@ class OrdersController < ApplicationController
   order.ordered_user_id = order_params[:ordered_user_id]
    order.save
 
-    order_item_params[:item_id].each do |item_id|
+    # order_item_params.each do |item|
+
+
+    # order.ordered_user.items.each do |item|
     order_item = OrderItem.new(order_item_params)
-    order_item.item_id = item_id
+
+    # order_item.item_id = item.ide
     order_item.order_id = order.id
-    # # order_item.code = item.code
-    # # order_item.price = item.price
-    # # order_item.amount = item.amount
-    # # order_item.until = item.until
-    # # order_item.image_id = item.image_id
-    # # order_item.notice = item.notice
+    byebug
+    # order_item.code = item.code
+    # order_item.price = item.price
+    # order_item.amount = item.amount
+    # order_item.until = item.until
+    # order_item.image_id = item.image_id
+    # order_item.notice = item.notice
 
     order_item.save
-    end
+    # end
 
     # item_id = order_params[:item_id]
     # item = Item.find(item_id)
@@ -45,9 +50,7 @@ class OrdersController < ApplicationController
     # Order.where(item_id: order_item_params[:item_id]).destroy_all
     # order_item = OrderItem.find(order_item_params[:item_id])
     # byebug
-    # Item.find(order_item_params[:item_id]).each do |item|
-    #   item.delete
-    # end
+    Item.find(order_item_params[:item_id]).delete
     redirect_to orders_complete_path
   end
 
@@ -71,17 +74,17 @@ class OrdersController < ApplicationController
 
   private
 
-  # def order_item_params
-  # params.require(:order_item).permit(:amount, :name, :code, :image_id, :notice, :price, :until, { :item_id=> [] })
-  # end
-
   def order_item_params
-  params.require(:order_item).permit({ :item_id=> [] })
+  params.permit(:amount, :name, :code, :image, :notice, :price, :until,:item_id, :order_id)
   end
+
+  # def order_item_params
+  # params.require(:order_item).permit({ :item_id=> [] })
+  # end
 
 
   def order_params
-  params.require(:order).permit(:ordered_user_id, :order_user_id)
+  params.permit(:ordered_user_id, :order_user_id)
   end
 
 

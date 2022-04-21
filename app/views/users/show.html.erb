@@ -13,7 +13,6 @@
         <th>在庫金額</th>
         <th>消費期限</th>
         <th>備考</th>
-        <th>画像</th>
         </tr>
     </thead>
 
@@ -22,28 +21,49 @@
 
 
 
-       <%= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
+       <%#= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
 
-       <%= f.hidden_field :order_user_id, :value => current_user.id %>
-        <%= f.hidden_field :ordered_user_id, :value => @user.id %>
+       <%#= f.hidden_field :order_user_id, :value => current_user.id %>
+        <%#= f.hidden_field :ordered_user_id, :value => @user.id %>
 
 
-        <%= collection_check_boxes(:order_item, :item_id, @user.items, :id, :name, include_hidden: false) do |b| %>
+        <%#= collection_check_boxes(:order_item, :item_id, @user.items, :id, :name, include_hidden: false) do |b| %>
     <tbody>
-      <tr>
-        <td><%= b.label { b.check_box + b.text } %></td>
-      <% end %>
-      </tr>
+
+     <%#= b.label { b.check_box + b.text } %>
+
 
       <tr>
-        <% @items.each do |item| %>
-        <td><%= item.amount %></td>
-        <td><%= item.price %></td>
-        <% @subtotal = item.price * item.amount %>
-        <td><%= @subtotal %></td>
-        <td><%= item.until %></td>
-        <td><%= item.notice %></td>
-        <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
+
+
+         <td width=”300″>
+             <% @items.each do |item| %>
+            <%=link_to item.name, buy_path(item.id) %></br>
+            <% end %></td>
+
+             <td><% @items.each do |item| %>
+            <%= item.code %></br>
+            <% end %></td>
+
+            <td><% @items.each do |item| %>
+            <%= item.amount %></br>
+            <% end %></td>
+
+            <td><% @items.each do |item| %>
+            <%= item.price %></br>
+            <% end %></td>
+
+
+            <td><% @items.each do |item| %>
+            <% @subtotal = item.price * item.amount %>
+            <%= @subtotal %></br>
+            <% end %></td>
+
+
+            <td><% @items.each do |item| %>
+            <%= item.until %></br>
+            <% end %></td>
+        <td><%#= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
 <%#= f.hidden_field :amount, :value => item.amount, multiple: true%>
 <%#= f.hidden_field :price, :value => item.price, multiple: true %>
 <%#= f.hidden_field :until, :value => item.until, multiple: true %>
@@ -52,19 +72,19 @@
      </tr>
     </tbody>
 </table>
+</div>
+</div>
 
 
-<% end %>
-<% @total +=  @subtotal %>
+
 <!--<div class="col-md-4 offset-md-8">-->
 <!--  合計在庫金額 <%#= @total %>円-->
 
-  <div class="col-md-1 offset-md-11">
-  <%= f.submit '注文する', class: "btn btn-sm btn-primary" %>
-  <!--</div>-->
-</div>
 
-<% end %>
-</div>
+  <%#= f.submit '注文する', class: "btn btn-sm btn-primary" %>
+  <!--</div>-->
+
+
+
   </div>
 </div>

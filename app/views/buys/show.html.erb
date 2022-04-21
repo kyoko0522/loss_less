@@ -1,0 +1,57 @@
+ <%= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
+
+       <%= f.hidden_field :order_user_id, :value => current_user.id %>
+        <%= f.hidden_field :ordered_user_id, :value => @user.id %>
+  <div class="container">
+  <div class="row">
+   <div class="col-md-7 offset-md-3">
+
+<table class="table table-hover table-inverse">
+  <tr>
+   <th>商品画像</th>
+   <td><%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg' %></td>
+</tr>
+<tr>
+  <th>商品名</th>
+  <td><%= @item.name %></td>
+</tr>
+<tr>
+  <th>数量</th>
+  <td><%= @item.amount %></td>
+</tr>
+<tr>
+   <th>原価</th>
+   <td><%= @item.price %></td>
+</tr>
+
+<tr>
+   <th>消費期限</th>
+   <td><%= @item.until %></td>
+</tr>
+
+
+<tr>
+    <th>備考</th>
+    <td><%= @item.notice %></td>
+</tr>
+
+</table>
+
+<%#= f.hidden_field :order_id, :value => @order.id%>
+<%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.hidden_field :code, :value => @item.code %>
+<%= f.hidden_field :name, :value => @item.name %>
+<%= f.hidden_field :amount, :value => @item.amount %>
+<%= f.hidden_field :price, :value => @item.price %>
+<%= f.hidden_field :until, :value => @item.until %>
+<%= f.hidden_field :notice, :value => @item.notice%>
+<%= f.hidden_field :image, :value => @item.image_id %>
+
+<%= f.submit '注文する', class: "btn btn-sm btn-primary" %>
+
+
+ <% end %>
+
+ </div>
+  </div>
+</div>

@@ -26,30 +26,30 @@
 
              <td width=”300″>
              <% order.order_items.each do |item| %>
-            <%=item.item.name %></br>
+            <%=item.name %></br>
             <% end %></td>
 
              <td><% order.order_items.each do |item| %>
-            <%= item.item.code %></br>
+            <%= item.code %></br>
             <% end %></td>
 
             <td><% order.order_items.each do |item| %>
-            <%= item.item.amount %></br>
+            <%= item.amount %></br>
             <% end %></td>
 
             <td><% order.order_items.each do |item| %>
-            <%= item.item.price %></br>
+            <%= item.price %></br>
             <% end %></td>
 
 
             <td><% order.order_items.each do |item| %>
-            <% @subtotal = item.item.price * item.item.amount %>
+            <% @subtotal = item.price * item.amount %>
             <%= @subtotal %></br>
             <% end %></td>
 
 
             <td><% order.order_items.each do |item| %>
-            <%= item.item.until %></br>
+            <%= item.until %></br>
             <% end %></td>
 
             <td><%= order.send_status  ? '発送済み' :'準備中' %></td>

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create]
   resources :users, only: [:show]
   resources :sells, only: [:index, :show, :update]
+  resources :buys, only: [:show]
 end

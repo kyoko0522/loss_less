@@ -12,9 +12,10 @@
         <tbody>
           <tr>
         <% @order_items.each do |item| %>
-            <td><%= item.item.name %></td>
-            <td><%= item.item.code %></td>
-            <td><%= attachment_image_tag item.item, :image %></td>
+            <td><%= item.name %></td>
+            <td><%= item.code %></td>
+            <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
+
           </tr>
          <% end %>
         </tbody>
