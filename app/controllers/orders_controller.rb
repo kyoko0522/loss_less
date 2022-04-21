@@ -23,12 +23,14 @@ class OrdersController < ApplicationController
 
     # order_item.item_id = item.ide
     order_item.order_id = order.id
-    byebug
+    order_item.image_id = params[:image]
+   byebug
+
     # order_item.code = item.code
     # order_item.price = item.price
     # order_item.amount = item.amount
     # order_item.until = item.until
-    # order_item.image_id = item.image_id
+
     # order_item.notice = item.notice
 
     order_item.save

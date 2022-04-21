@@ -8,9 +8,9 @@
   <tr>
   <% @order.order_items.each do |item| %>
    <th>商品画像</th>
-   <% if item.image_id? %>
+
    <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></br>
-    <% end %></td>
+    </td>
     <% end %>
 </tr>
 
