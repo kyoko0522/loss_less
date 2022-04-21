@@ -2,23 +2,20 @@
   <div class="row">
    <div class="col-md-11 offset-md-1">
 <table class="table table-hover table-inverse">
-    <thead>
-        <tr>
-            <th>商品名</th>
-            <th>商品コード</th>
-            <th>商品画像</th>
-        </tr>
-    </thead>
-        <tbody>
-          <tr>
-        <% @order_items.each do |item| %>
-            <td><%= item.name %></td>
-            <td><%= item.code %></td>
-            <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
-
-          </tr>
-         <% end %>
-        </tbody>
+ <% @order_items.each do |item| %>
+<tr>
+  <th>商品名</th>
+  <td><%= item.name %></td>
+</tr>
+<tr>
+  <th>商品コード</th>
+  <td><%= item.code %></td>
+</tr>
+ <tr>
+   <th>商品画像</th>
+   <td><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpeg' %></td>
+</tr>
+ <% end %>
 </table>
 </div>
   </div>

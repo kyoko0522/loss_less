@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  attachment :image
   belongs_to :order_user, foreign_key:'order_user_id', class_name: 'User'
   belongs_to :ordered_user, foreign_key:'ordered_user_id', class_name: 'User'
   # belongs_to :user, foreign_key:ordered_user_id

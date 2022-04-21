@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     # order_item.item_id = item.ide
     order_item.order_id = order.id
     order_item.image_id = params[:image]
-   byebug
+   # byebug
 
     # order_item.code = item.code
     # order_item.price = item.price
