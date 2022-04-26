@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
  before_action :authenticate_user!
    def search
     if params[:name].present?
-      @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+      @items = Item.where('name LIKE ?', "%#{params[:name]}%").where(is_available: true)
       Item.where.not(user_id: 'current_user')
     else
       @items = Item.none
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def index
     @user = current_user
-    @items = current_user.items.all
+    @items = current_user.items.where(is_available: true)
 
   end
 

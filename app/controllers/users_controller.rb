@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     # @order = Order.new
     # @order_item = OrderItem.new
     @user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.where(is_available: true)
     @total = 0
    end
 

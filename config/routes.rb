@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'items/search' => 'items#search'
-  resources :items
+  resources :items do
+    resource :buys, only: [:show, :create]
+  end
   get 'orders/complete' => 'orders#complete'
   resources :orders, only: [:index, :show, :create]
   resources :users, only: [:show]
   resources :sells, only: [:index, :show, :update]
-  resources :buys, only: [:show]
 end

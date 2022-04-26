@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_21_085051) do
+ActiveRecord::Schema.define(version: 2022_04_25_130456) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_04_21_085051) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.date "until"
+    t.boolean "is_available", default: true, null: false
   end
 
   create_table "order_items", force: :cascade do |t|

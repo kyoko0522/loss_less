@@ -1,4 +1,4 @@
- <%= form_with model:@order, url: orders_path, method: :post,  local:true do |f| %>
+ <%= form_with model:@order, url: item_buys_path, method: :post,  local:true do |f| %>
 
        <%= f.hidden_field :order_user_id, :value => current_user.id %>
         <%= f.hidden_field :ordered_user_id, :value => @user.id %>
@@ -7,7 +7,7 @@
    <div class="col-md-7 offset-md-3">
 
 <table class="table table-hover table-inverse">
-    
+
   <tr>
    <th>商品画像</th>
    <td><%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg' %></td>
