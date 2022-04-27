@@ -23,7 +23,9 @@ class BuysController < ApplicationController
     # byebug
 
     @order_item.save
+
     @item.is_available = false
+    @item.save
     redirect_to orders_complete_path
   # else
   #   @user = @item.user
