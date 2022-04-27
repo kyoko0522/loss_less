@@ -4,8 +4,8 @@
 <table class="table table-hover table-inverse">
     <thead>
         <strong><h4><%= @user.name %>店在庫受け入れ状況</h4></strong>
-        <span>. </span>
-        <span>注文日を押すと商品の画像が確認できます</span>
+
+        <!--<span>注文日を押すと商品の画像が確認できます</span>-->
         <tr>
             <th>依頼先店舗名</th>
             <th>注文日</th>
@@ -22,7 +22,7 @@
             <% @orders.each do |order| %>
           <tr>
              <td><%= order.ordered_user.name %>店</td>
-             <td><%= link_to order.created_at.strftime('%Y/%m/%d'), order_path(order.id) %></td>
+             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 
              <td width=”300″>
              <% order.order_items.each do |item| %>

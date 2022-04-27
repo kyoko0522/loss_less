@@ -19,11 +19,13 @@
   <tbody>
     <% @items.each do |item| %>
     <% unless item.user == current_user %>
+
       <tr>
         <td><%= link_to item.name, item_buys_path(item.id) %></td>
         <td><%= item.amount%></td>
         <td><%= link_to item.user.name, user_path(item.user.id) %></td>
       </tr>
+
     <% end %>
     <% end %>
 
