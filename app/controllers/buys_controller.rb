@@ -22,16 +22,20 @@ class BuysController < ApplicationController
     @order_item.image_id = params[:image]
     # byebug
 
-    @order_item.save
+  if  @order_item.save
 
-    @item.is_available = false
-    @item.save
-    redirect_to orders_complete_path
+      @item.is_available = false
+      @item.save
+       redirect_to orders_complete_path
+  else
+    redirect_to item_buys_path
   # else
   #   @user = @item.user
   #   render :show
   # end
   end
+  end
+
 
   private
 
