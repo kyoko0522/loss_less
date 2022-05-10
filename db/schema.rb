@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_03_134644) do
+ActiveRecord::Schema.define(version: 2022_05_10_114911) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_05_03_134644) do
     t.boolean "send_status", default: false, null: false
   end
 
-  create_table "reqests", force: :cascade do |t|
+  create_table "requests", force: :cascade do |t|
     t.integer "amount"
     t.integer "item_id"
     t.datetime "created_at", null: false
