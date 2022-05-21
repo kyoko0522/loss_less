@@ -17,7 +17,7 @@ class BuysController < ApplicationController
 
     @order_item = OrderItem.new(order_item_params)
 
-    # order_item.item_id = item.ide
+
     @order_item.order_id = @order.id
     @order_item.image_id = params[:image]
     # byebug
@@ -29,10 +29,7 @@ class BuysController < ApplicationController
        redirect_to orders_complete_path
   else
     redirect_to item_buys_path
-  # else
-  #   @user = @item.user
-  #   render :show
-  # end
+
   end
   end
 
