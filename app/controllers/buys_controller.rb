@@ -4,7 +4,6 @@ class BuysController < ApplicationController
   def show
     # binding.pry
      @order = Order.new
-    # @item = Item.find(params[:id])
      @user = @item.user
   end
 
