@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @user = current_user
     if Order.where(order_user_id: current_user.id).present?
     @orders = current_user.orders
-    #   @orders = Order.find(3)
+
     #   # @orders = Order.where(order_user_id: 'current_user')
     else
       redirect_to root_path
